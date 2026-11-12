@@ -6,3 +6,6 @@ __pycache__/
 .DS_Store
 brand-kit/
 *.zip
+.wrangler/
+node_modules/
+.dev.vars

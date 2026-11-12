@@ -1,0 +1,12 @@
+name = "thadacha-lead"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[vars]
+# С каких адресов принимаются заявки (через запятую)
+ALLOWED_ORIGINS = "https://tulkinjonirisbaev.github.io"
+
+# Секреты задаются командами, в файлы не пишутся:
+#   npx wrangler secret put TG_BOT_TOKEN
+#   npx wrangler secret put TG_CHAT_ID

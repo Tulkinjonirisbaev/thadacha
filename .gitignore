@@ -4,3 +4,5 @@ landing-architecture.md
 brandbook.html
 __pycache__/
 .DS_Store
+brand-kit/
+*.zip

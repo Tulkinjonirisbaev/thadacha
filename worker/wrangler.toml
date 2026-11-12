@@ -5,7 +5,7 @@ workers_dev = true
 
 [vars]
 # С каких адресов принимаются заявки (через запятую; «*.» — любой поддомен)
-ALLOWED_ORIGINS = "https://tulkinjonirisbaev.github.io,https://t-3.uz,https://*.t-3.uz"
+ALLOWED_ORIGINS = "https://tulkinjonirisbaev.github.io,https://t-3.uz,https://*.t-3.uz,https://thadacha.uz,https://*.thadacha.uz"
 
 # Секреты задаются командами, в файлы не пишутся:
 #   npx wrangler secret put TG_BOT_TOKEN

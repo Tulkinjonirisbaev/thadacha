@@ -38,6 +38,7 @@ def to_uz(s):
     # tutuq belgisi: в Nunito нет U+02BC — ставим типографский апостроф, который есть в обоих шрифтах
     s = s.replace('\u02bb', '\u2018').replace('\u02bc', '\u2019')
     s = s.replace('<html lang="ru">', '<html lang="uz">')
+    s = s.replace('<link rel="canonical" href="https://thadacha.uz/">', '<link rel="canonical" href="https://thadacha.uz/uz.html">')
     s = s.replace('<a href="index.html" aria-current="true">RU</a><a href="uz.html">UZ</a>',
                   '<a href="index.html">RU</a><a href="uz.html" aria-current="true">UZ</a>')
     # что осталось кириллицей вне комментариев — не переведено

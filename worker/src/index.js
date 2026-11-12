@@ -7,8 +7,12 @@ export default {
   async fetch(req, env) {
     const origin = req.headers.get('Origin') || '';
     const allowed = (env.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
+    // «https://*.example.uz» разрешает любой поддомен
+    const originOk = allowed.some(a => a.includes('*.')
+      ? origin.startsWith(a.split('*.')[0]) && origin.endsWith('.' + a.split('*.')[1]) && !origin.slice(a.split('*.')[0].length).includes('/')
+      : a === origin);
     const cors = {
-      'Access-Control-Allow-Origin': allowed.includes(origin) ? origin : allowed[0] || '',
+      'Access-Control-Allow-Origin': originOk ? origin : '',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Vary': 'Origin',
@@ -19,7 +23,7 @@ export default {
 
     if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
     if (req.method !== 'POST') return done(405, { ok: false, error: 'method' });
-    if (!allowed.includes(origin)) return done(403, { ok: false, error: 'origin' });
+    if (!originOk) return done(403, { ok: false, error: 'origin' });
     if (!env.TG_BOT_TOKEN || !env.TG_CHAT_ID) return done(500, { ok: false, error: 'not_configured' });
 
     let data;

@@ -1,0 +1,6 @@
+api/config.php
+# внутренние документы — не публикуются
+landing-architecture.md
+brandbook.html
+__pycache__/
+.DS_Store
